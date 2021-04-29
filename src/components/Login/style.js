@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const LoginContainer = styled.div`
@@ -13,13 +14,12 @@ export const LoginSection = styled.div`
 
 export const LoginInput = styled.input`
   width: 676px;
-  height: 50px;
+  height: 60px;
   border: 2px solid #45e36a;
-  margin-top: 100px;
+  margin-bottom: 100px;
   font-size: 25px;
   outline: none;
   padding: 3px 10px;
-  display: block;
 `;
 
 export const LoginButton = styled.button`
@@ -28,9 +28,24 @@ export const LoginButton = styled.button`
   color: white;
   background-color: #45e36a;
   border: none;
-  margin-top: 100px;
+  margin-bottom: 20px;
   font-size: 30px;
   :focus {
     cursor: pointer;
   }
+  font-family: "NanumGothicBold";
+`;
+
+export const MoveTextContainer = styled.div`
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  margin-top: 20px;
+`;
+
+export const MoveText = styled(Link)`
+  text-decoration: none;
+  outline: none;
+  color: black;
 `;
