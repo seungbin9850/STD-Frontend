@@ -25,7 +25,7 @@ const Login = () => {
   const loginButtonClickHandler = useCallback(async () => {
     try {
       const res = await login(id, password);
-      console.log(res);
+      localStorage.setItem("accessToken", res.data.token);
     } catch (e) {
       alert("로그인 실패");
     }
