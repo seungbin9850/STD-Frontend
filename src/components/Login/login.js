@@ -1,23 +1,21 @@
 import React, { useCallback, useState } from "react";
-import { useHistory } from "react-router";
 import { login } from "../../api";
 import * as S from "./style";
 
 const Login = () => {
-  const history = useHistory();
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
-  const idInputOnChange = useCallback((e) => {
-    setId(e.target.value);
-  }, []);
-  const passwordInputOnChange = useCallback((e) => {
-    setPassword(e.target.value);
-  }, []);
+  const idInputOnChange = useCallback((e) => setId(e.target.value), []);
+  const passwordInputOnChange = useCallback(
+    (e) => setPassword(e.target.value),
+    []
+  );
   const loginButtonClickHandler = useCallback(async () => {
     try {
       const res = await login(id, password);
       localStorage.setItem("accessToken", res.data.token);
+      alert("로그인 성공");
     } catch (e) {
       alert("로그인 실패");
     }
