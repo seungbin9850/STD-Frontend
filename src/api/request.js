@@ -7,3 +7,11 @@ export const apiRequest = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+export const apiRequestWithAccessToken = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  },
+});
