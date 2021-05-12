@@ -30,7 +30,7 @@ export const SignupButton = styled.button`
   border: none;
   margin-bottom: 20px;
   font-size: 30px;
-  :focus {
+  :hover {
     cursor: pointer;
   }
   font-family: "NanumGothicBold";

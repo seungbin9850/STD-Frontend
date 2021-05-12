@@ -34,9 +34,11 @@ const Signup = () => {
         case 500:
           alert("에러");
           break;
+        default:
+          break;
       }
     }
-  }, [id, password, nickname]);
+  }, [id, password, nickname, history]);
   const pressHandler = useCallback(
     (e) => {
       if (e.keyCode === 13) {
