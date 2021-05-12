@@ -15,7 +15,7 @@ export const HeaderText = styled.button`
   margin-right: 80px;
   font-size: 20px;
   font-family: "NanumGothicBold";
-  :focus {
+  :hover {
     cursor: pointer;
   }
 `;
