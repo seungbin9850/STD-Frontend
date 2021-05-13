@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { getPosts } from "../../../../api/post";
+import { getPosts, searchPosts } from "../../../../api/post";
 import StudyPost from "./StudyPost/StudyPost";
 import * as S from "./style";
 
@@ -8,10 +8,13 @@ let maxPage;
 const FindStudy = () => {
   const [page, setPage] = useState(0);
   const [posts, setPosts] = useState([]);
+  const [keyword, setKeyword] = useState("");
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await getPosts(page);
+        let res;
+        if (!keyword) res = await getPosts(page);
+        res = await searchPosts(keyword, page);
         setPosts(res.data.data);
         maxPage = res.data.maxPage;
       } catch (e) {
@@ -38,15 +41,30 @@ const FindStudy = () => {
     }
   }, [page]);
 
+  const searchInputOnChange = useCallback((e) => {
+    setKeyword(e.target.value);
+  }, []);
+
+  const searchButtonOnClick = useCallback(async () => {
+    try {
+      const res = await searchPosts(keyword, 0);
+      setPage(0);
+      setPosts(res.data.data);
+      maxPage = res.data.maxPage;
+    } catch (e) {
+      alert("검색 실패");
+    }
+  }, [keyword]);
+
   return (
     <S.FindStudyContainer>
       <S.StudySearchContainer>
-        <S.StudySearchInput placeholder="Search..."></S.StudySearchInput>
-        <S.StudySearchButton>검색</S.StudySearchButton>
+        <S.StudySearchInput onChange={searchInputOnChange} placeholder="Search..."></S.StudySearchInput>
+        <S.StudySearchButton onClick={searchButtonOnClick}>검색</S.StudySearchButton>
       </S.StudySearchContainer>
       <S.StudyPostsListContainer>
         {posts.map((e) => (
-          <StudyPost id={e.id} title={e.title} tags={e.tags}></StudyPost>
+          <StudyPost id={e.id} title={e.title} tags={e.tags} isMine={e.isMine}></StudyPost>
         ))}
       </S.StudyPostsListContainer>
       <S.StudyPostPageButtonContainer>
