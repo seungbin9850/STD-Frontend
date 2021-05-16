@@ -1,6 +1,6 @@
 import * as S from "./style";
 
-const StudyPost = ({ id, title, tags }) => {
+const StudyPost = ({ id, title, tags, isMine }) => {
   return (
     <S.StudyPostContainer>
       <S.StudyPostTitle>{title}</S.StudyPostTitle>
