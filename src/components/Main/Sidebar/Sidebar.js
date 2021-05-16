@@ -5,6 +5,8 @@ const navigation = [
   { name: "스터디 만들기", url: "/make" },
   { name: "스터디 찾기", url: "/find" },
   { name: "내 스터디", url: "/mine" },
+  { name: "내가 만든 스터디", url: "/made" },
+  { name: "내가 신청한 스터디", url: "/apply" },
 ];
 
 const Sidebar = ({ num }) => {
