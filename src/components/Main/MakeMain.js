@@ -1,5 +1,6 @@
 import { Header } from "../Default/Header";
 import { Sidebar } from "./Sidebar";
+import { MakeStudy } from "./Study/MakeStudy";
 import * as S from "./style";
 
 const MakeMain = () => {
@@ -8,6 +9,7 @@ const MakeMain = () => {
       <Header></Header>
       <S.MainContainer>
         <Sidebar num={0}></Sidebar>
+        <MakeStudy></MakeStudy>
       </S.MainContainer>
     </S.MainBody>
   );
